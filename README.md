@@ -58,7 +58,7 @@ await anyCode.deployFromInitCode(foo_icode.address, 0, {value: weiToSend, ...});
 const addr = await anyCode.lastAddress();
 ```
 
-I'm using *ethers.js*, which lets us deploy a contract by first creating a factory, `FooFactory`, and then call its `deploy` method to deploy it.
+I'm using *ethers.js*, which lets us deploy a contract by first creating a factory, `FooFactory`, and then calling its `deploy` method to deploy it.
 
 Since I wanted the final code to contain *not* the code returned by `Foo`'s *initcode*, but `Foo`'s *initcode* itself, I modified `deploy`.
 
@@ -109,7 +109,7 @@ Being still a noob, I couldn't find a clean way to return a bytes array from a s
 
 ```solidity
 function getFinalCode() external view {
-    bytes memory code = finalCode; // code is a copy in memory
+    bytes memory code = finalCode;      // code is a copy in memory
     assembly {
         return(add(code, 32), mload(code))
     }
