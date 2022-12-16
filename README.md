@@ -27,7 +27,7 @@ I don't like tests because I find them harder to debug and I don't feel free to 
 
 ## How it works
 
-CREATE2 determines the *deployment address* from the *initcode*, not the code returned by it. This means that we can use a single *initcode* that gets the *final code* from somewhere else. The *initcode* is always the same, ergo the *deployment address* doesn't change, but the *final code* do change.
+CREATE2 determines the *deployment address* from the *initcode*, not the code returned by it. This means that we can use a single *initcode* that gets the *final code* from somewhere else. The *initcode* is always the same, ergo the *deployment address* doesn't change, but the *final code* does change.
 
 I thought of two ways to do this:
 
