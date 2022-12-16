@@ -1,0 +1,17 @@
+NOTE: All values are in hex
+
+
+codecopy(0, start, codesize - start)
+    push1   start                                   60 0d
+    dup1                                            80
+    codesize                                        38
+    sub                                             03
+    dup1                                            80
+    swap2                                           91
+    push1   0                                       60 00
+    codecopy                                        39
+return(0, codesize - start)
+    push1   0                                       60 00
+    return                                          f3
+start:                                          0d:
+    <follows payload (initCode)>

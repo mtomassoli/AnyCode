@@ -1,0 +1,33 @@
+NOTE: All values are in hex
+
+
+memory[0: 4] = AnyCode.getFinalCode.selector
+    push4   <AnyCode.getFinalCode.selector>         63 FF FF FF FF
+    push1   0                                       60 00
+    mstore          /* mem[28: 32] = selector */    52
+success = call(gas(), msg.sender, 0, 1c, 4, 0, 0)
+    push1   0                                       60 00
+    dup1            /* 0 */                         80
+    push1   4                                       60 04
+    push1   1c                                      60 1c
+    dup3            /* 0 */                         82
+    caller                                          33
+    gas                                             5a
+    call                                            f1
+require(success)
+    push1   ok                                      60 1a
+    jumpi                                           57
+    push1   0                                       60 00
+    dup1                                            80
+    revert                                          fd
+ok:                                             1a:
+    jumpdest                                        5b
+returndatacopy(0, 0, returndatasize)
+    returndatasize                                  3d
+    push1   0                                       60 00
+    dup1                                            80
+    returndatacopy                                  3e
+return(0, returndatasize)
+    returndatasize                                  3d
+    push1   0                                       60 00
+    return                                          f3

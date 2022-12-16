@@ -1,0 +1,50 @@
+NOTE: All values are in hex
+
+
+memory[0: 4] = AnyCode.getInitCodeContract.selector
+    push4   <AnyCode.getInitCodeContract.selector>  63 FF FF FF FF
+    push1   0                                       60 00
+    mstore          /* mem[28: 32] = selector */    52
+success = call(gas(), msg.sender, 0, 1c, 4, 0, 20)
+    push1   20                                      60 20
+    push1   0                                       60 00
+    push1   4                                       60 04
+    push1   1c                                      60 1c
+    dup3            /* 0 */                         82
+    caller                                          33
+    gas                                             5a
+    call                                            f1
+require(success)
+    push1   ok                                      60 1b
+    jumpi                                           57
+    push1   0                                       60 00
+    dup1                                            80
+    revert                                          fd
+ok:                                             1b:
+    jumpdest                                        5b
+success = delegatecall(gas, mem[0:20], 0, 0, 0, 0)
+    push1   0                                       60 00
+    dup1                                            80
+    dup1                                            80
+    dup1                                            80
+    dup1                                            80
+    mload                                           51
+    gas                                             5a
+    delegatecall                                    f4
+require(success)
+    push1   ok2                                     60 2c
+    jumpi                                           57
+    push1   0                                       60 00
+    dup1                                            80
+    revert                                          fd
+ok2:                                            2c:
+    jumpdest                                        5b
+returndatacopy(0, 0, returndatasize)
+    returndatasize                                  3d
+    push1   0                                       60 00
+    dup1                                            80
+    returndatacopy                                  3e
+return(0, returndatasize)
+    returndatasize                                  3d
+    push1   0                                       60 00
+    return                                          f3

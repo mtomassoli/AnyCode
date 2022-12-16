@@ -1,0 +1,25 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "hardhat: run script",
+            "type": "shell",
+            "command": "npx hardhat run \"${file}\"",
+            "problemMatcher": [],
+        },
+        {
+            "label": "hardhat: compile all",
+            "type": "shell",
+            "command": "npx hardhat compile",
+            "problemMatcher": [],
+        },
+        {
+            "label": "hardhat: test all",
+            "type": "shell",
+            "command": "npx hardhat test",
+            "problemMatcher": [],
+        }
+    ]
+}
