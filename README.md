@@ -2,7 +2,7 @@
 
 This is a little POC which shows that CREATE2 can be used to put any bytecode at a fixed address.
 
-I've just realized that, unfortunately (for me, at least ;(), this is already well-known, so I've wasted 2 days of my life!
+I've just realized that, unfortunately (for me, at least ;( ), this is already well-known, so I've wasted 2 days of my life!
 
 I started learning about Ethereum 3 months ago so there's much I still don't know about its ecosystem.
 I've mainly been doing CTFs and challenges to get ready for auditing and bug hunting.
